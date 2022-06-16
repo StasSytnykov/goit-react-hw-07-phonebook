@@ -1,12 +1,15 @@
 import { useState } from 'react';
-import { nanoid } from 'nanoid';
-import { useContacts } from '../../hooks/contactsHook';
+import {
+  useAddContactMutation,
+  useGetContactsQuery,
+} from 'redux/contacts/contactsSlice';
 import style from './ContactForm.module.css';
 
 export const ContactForm = () => {
-  const { contacts, addContact } = useContacts();
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
+  const { data: contacts } = useGetContactsQuery();
+  const [addContact] = useAddContactMutation();
 
   const onAddContact = contact => {
     if (contacts && contacts.some(item => item.name === contact.name)) {
@@ -30,8 +33,7 @@ export const ContactForm = () => {
     event.preventDefault();
     onAddContact({
       name: name,
-      number: number,
-      id: nanoid(),
+      phone: number,
     });
 
     reset(event);

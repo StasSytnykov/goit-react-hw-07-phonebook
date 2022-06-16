@@ -7,5 +7,6 @@ export const useFilter = () => {
   const filter = useSelector(onFilterChange);
   const onChangeFilter = changeFilter =>
     dispatch(contactsActions.changeFilter(changeFilter));
+
   return { filter, changeFilter: onChangeFilter };
 };
