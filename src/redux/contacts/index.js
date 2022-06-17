@@ -1,1 +1,1 @@
-export * as contactsActions from './contactsSlice';
+export { filterAction } from './filterSlice';

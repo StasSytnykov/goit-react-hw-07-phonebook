@@ -1,13 +1,10 @@
 import { ContactListItem } from './ContactListItem';
-import { useContacts } from 'hooks/contactsHook';
 import { useFilter } from 'hooks/filterHook';
 import { useGetContactsQuery } from 'redux/contacts/contactsSlice';
 
 export const ContactsList = () => {
-  // const { contacts, deleteContact } = useContacts();
   const { filter } = useFilter();
   const { data: contacts } = useGetContactsQuery();
-  console.log(contacts);
 
   const getAddedContacts = () => {
     const toLowerCaseFilter = filter;
@@ -24,8 +21,8 @@ export const ContactsList = () => {
   return (
     <div>
       <ul>
-        {contacts &&
-          contacts.map(({ name, phone, id }) => (
+        {filterContact &&
+          filterContact.map(({ name, phone, id }) => (
             <ContactListItem
               key={id}
               name={name}
