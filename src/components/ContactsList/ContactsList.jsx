@@ -8,8 +8,10 @@ export const ContactsList = () => {
   const { data: contacts } = useGetContactsQuery();
 
   const filteredContacts = useMemo(() => {
-    return contacts?.filter(contact =>
-      contact.name.toLocaleLowerCase().includes(filter.toLocaleLowerCase())
+    return (
+      contacts?.filter(contact =>
+        contact.name.toLocaleLowerCase().includes(filter.toLocaleLowerCase())
+      ) ?? []
     );
   }, [filter, contacts]);
 
