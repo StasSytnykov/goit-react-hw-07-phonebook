@@ -5,7 +5,6 @@ import { onFilterChange } from 'redux/contacts/filterSlice';
 export const useFilter = () => {
   const dispatch = useDispatch();
   const filter = useSelector(onFilterChange);
-  console.log(filter);
   const onChangeFilter = event => dispatch(filterAction.changeFilter(event));
 
   return { filter, changeFilter: onChangeFilter };
